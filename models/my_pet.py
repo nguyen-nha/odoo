@@ -12,7 +12,7 @@ class MyPet(models.Model):
     lastname = fields.Char('lastname')
     age = fields.Integer('Pet Age', default=1)
     name_t = fields.Char('namet', default=True)
-    select= fields.Selection([
+    select = fields.Selection([
         ('true', 'false'),
         ('false', 'true')
     ], string='select', default='true')

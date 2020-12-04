@@ -3,7 +3,7 @@
     'name': "My pet",
     'summary': """My pet model""",
     'description': """Managing pet information""",
-    'author': "minhng.info",
+    'author': "nguyen_nha",
     'website': "",
     'category': 'Uncategorized',
     'version': '0.1',

@@ -11,7 +11,7 @@
                             <label for="name" string="Pet Name" class="oe_edit_only"/>
                             <h1><field name="name" placeholder="nhập tên"/></h1>
 <!--                            <label for="owner_id"/>-->
-<!--                            <h3></h3>-->
+<!--                            <h3></  h3>-->
                         </div>
                         <group name="images">
                             <group>
@@ -24,7 +24,7 @@
                                 <field name="gender"/>
                             </group>
                             <group>
-                                <field name="baden"/>
+                                <field name="weight"/>
                             </group>
                         </group>
                         <notebook>
@@ -53,14 +53,13 @@
 								</group>
 							</page>
                             <page name="pet_promotion" string="Pet Promotion">
-                                <field name="pet_line" model= "tree" widget= "section_and_note_one2many" attrs = "{'readonly': [('state', 'in', ('done','cancel'))]}"/>
-                                    <tree string="Pet Lines Tree" editable =" bottom ">
+                                <field name="pet_line" model="tree" widget="section_and_note_one2many" />
+                                    <tree string="Pet Lines Tree" editable ="bottom">
                                         <field name="petname"/>
                                         <field name="nickname"/>
                                         <field name="petname"/>
                                         <field name="weight"/>
                                         <field name="dob"/>
-                                        <field name=""/>
                                     </tree>
                             </page>
 						</notebook>
@@ -84,21 +83,16 @@
                 </tree>
             </field>
         </record>
-
         <record id="action_my_pet" model="ir.actions.act_window">
             <field name="name">My Pet</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">my.pet</field>
-            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
-            <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('my_pet_tree_view')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('my_pet_form_view')})]"/>
+            <field name="view_mode">tree,form</field>
         </record>
 <record id="action_contacts_summary" model="ir.actions.act_window">
         <field name="name">Contacts</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.partners</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="search_view_id" ref="base.view_res_partner_filter"/>
         <field name="help" type="html">
@@ -141,14 +135,12 @@
         </record>
         <menuitem id="my_pet_menu_root"
             name="My Pet"
-            sequence="7"
-
-            active="flase" />
+            sequence="7"/>
 
         <menuitem id="classify_menu"
+            action="action_my_pet"
             name="Classify"
             sequence="10"
             parent="my_pet_menu_root"/>
-
     </data>
 </odoo>
