@@ -20,6 +20,9 @@
                                 <field name="weight"/>
                             </group>
                             <group>
+                                <field name="consignment"/>
+                            </group>
+                            <group>
                                 <field name="dob"/>
                                 <field name="gender"/>
                             </group>
