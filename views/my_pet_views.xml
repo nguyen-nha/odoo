@@ -4,6 +4,7 @@
         <record id="my_pet_form_view" model="ir.ui.view">
             <field name="name">my.pet.form.view</field>
             <field name="model">my.pet</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <form>
                     <sheet>

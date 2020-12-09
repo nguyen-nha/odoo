@@ -3,8 +3,8 @@ from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError, ValidationError
 
 class MyPet(models.Model):
-    _inherit = 'sale.order'
     _name = "my.pet"
+    _inherit = 'sale.order'
     _description = "My pet model"
 
     name = fields.Char('Pet Name', required=True)
@@ -21,7 +21,7 @@ class MyPet(models.Model):
     weight = fields.Float('Weight (kg)')
     dob = fields.Date('DOB', required=False)
     baden = fields.Char('Ba Den', default='true')
-    consignment = fields.Boolean(default=False)
+    consignment = fields.Boolean('Ky Gui',default=False)
     lastname = fields.Char('lastname')
     gender = fields.Selection([
         ('male', 'Male'),
@@ -29,15 +29,12 @@ class MyPet(models.Model):
     ], string='Gender', default='male')
     pet_image = fields.Binary("Pet Image", attachment=True, help="Pet Image")
     owner_ids = fields.Many2many('res.partner', string='Owner')
-    sale_order_option_ids = fields.One2many(
-        'sale.order.option', 'order_id', 'Optional Products Lines',
-        copy=True, readonly=True,
-        states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     product_ids = fields.Many2many(comodel_name='product.product',
                                 string="Related Products",
                                 relation='pet_product_rel',
                                 column1='col_pet_id',
                                 column2='col_product_id')
+
     pet_line = fields.One2many('my.pet.line', 'pet_id', string='Order Lines', )
 
 class MyPetline(models.Model):
