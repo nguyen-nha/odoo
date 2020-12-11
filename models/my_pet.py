@@ -4,7 +4,6 @@ from odoo.exceptions import UserError, ValidationError
 
 class MyPet(models.Model):
     _name = "my.pet"
-    _inherit = 'sale.order'
     _description = "My pet model"
 
     name = fields.Char('Pet Name', required=True)
